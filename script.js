@@ -8,5 +8,7 @@ for (let i = 0; i < arrStr.length; i++) {
   
 }
 
+console.log(result);
+
 let resultPow = result ** 3;
 console.log(+String(resultPow)[0], +String(resultPow)[1]);
