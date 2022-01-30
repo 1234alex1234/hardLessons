@@ -9,5 +9,4 @@ for (let i = 0; i < arrStr.length; i++) {
 }
 
 let resultPow = result ** 3;
-let resultPowStr = String(resultPow);
 console.log(+String(resultPow)[0], +String(resultPow)[1]);
