@@ -12,4 +12,6 @@ console.log(result);
 
 let resultPow = result ** 3;
 let resultPowStr = String(resultPow);
-console.log(resultPowStr[0], resultPowStr[1]);
+let firstNumbers = resultPowStr.substring(0, 2);
+
+console.log(+firstNumbers);
