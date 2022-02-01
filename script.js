@@ -1,17 +1,37 @@
-let num = 266219;
-let str = String(num);
-let arrStr = str.split("");
-let result = 1;
 
-for (let i = 0; i < arrStr.length; i++) {
-   result = arrStr[i] * result;
-  
+//1 задание
+let lang = prompt("Ведите Ваше значение!");
+
+// //С помощью if
+if (lang == "ru") {
+  console.log("Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье");
+} else if (lang =="en") {
+  console.log("Monday", "Tuesday", "Wensday", "Thursday", "Friday", "Suterday", "Sunday");
+} else {
+  console.log("Введите верное значение");
 }
 
-console.log(result);
+// //С помощью switch case
+switch (true) {
+  case (lang == "ru"):
+    console.log("Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье");
+    break;
+  case (lang == "en"):
+    console.log("Monday", "Tuesday", "Wensday", "Thursday", "Friday", "Suterday", "Sunday");
+    break;
+  default:
+  console.log("Ведите верное значение!");
+}
 
-let resultPow = result ** 3;
-let resultPowStr = String(resultPow);
-let firstNumbers = resultPowStr.substring(0, 2);
+//с многомерными массивами
+let arrDay = {
+  ru : ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"],
+  en : ["Monday", "Tuesday", "Wensday", "Thursday", "Friday", "Suterday", "Sunday"]
+};
 
-console.log(+firstNumbers);
+console.log(arrDay[lang]);
+
+//Задание 2
+const namePersone = prompt("Ведите Ваше имя");
+
+namePersone == "Артем" ? console.log("Директор") : namePersone == "Александр" ? console.log("Учитель") : console.log("студент");
