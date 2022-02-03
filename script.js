@@ -1,7 +1,7 @@
 function noName(text) {
   let maxLength = 30;
-  text = text.trim();
   if(typeof text === 'string') {
+    text = text.trim();
     if(text.length > maxLength) {
       text = text.substring(0, maxLength) + '...';
       console.log(text);
@@ -15,6 +15,7 @@ function noName(text) {
 
 noName("                    Привет!Я очень длинный текст возможно даже длиннее 30 символов!                ");
 noName("                    привет!А я не очень!               ");
+noName(1);
 
 
 
