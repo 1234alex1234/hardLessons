@@ -1,27 +1,60 @@
-//Задание номер 1
-let arr = ['12', '45', '67', '789', '40', '21', '241'];
+const isNumber = function (num) {
+  return !isNaN(parseFloat(num)) && isFinite(num);
+};
 
-for(let i = 0; i< arr.length; i++) {
-  if(arr[i][0] == 2 || arr[i][0] == 4) {
-    console.log(arr[i]);
+
+function one() {
+  let counter = 10;
+  const someNumberFunc = function getRandomInRange() {
+    return Math.floor(Math.random() * (100 - 1 + 1)) + 1;
+  };
+
+  let someNumber = someNumberFunc();
+  console.log(someNumber);
+
+
+  function two() {
+    let yourNumber = prompt("Введите число от 1 до 100");
+    let newGame;
+
+    if (yourNumber == null) {
+      alert("Игра окончена!");
+    } else if (!isNumber(yourNumber)) {
+      alert("это не число!Введите число!");
+      two();
+    } else if (yourNumber > someNumber) {
+      counter--;
+      alert(`Число больше!Осталось ${counter}  попыток`);
+      if (counter == 0) {
+        newGame = confirm("Попытки закончились!Сыграем еще раз?");
+        if (newGame) {
+          one();
+        } else if (newGame == false) {
+          alert("Игре конец!");
+          //вот сюда то выходит какая то хрень!!
+        }
+        return; //Почему если вот этого хлопца поставить
+      }
+      two();
+    } else if (yourNumber < someNumber) {
+      counter--;
+      alert(`Число меньше!Осталось ${counter}  попыток`);
+      if (counter == 0) {
+        newGame = confirm("Попытки закончились!Сыграем еще раз?");
+        if (newGame) {
+          one();
+        } else if (newGame == false) {
+          alert("Игре конец!");
+          //сюда то выходит какая то хрень!Почему??)
+        }
+        return; //и вот этого соответственно
+      }
+      two();
+    } else if (yourNumber == someNumber) {
+      alert("Вы выйграли!");
+    }
   }
+  two();
 }
 
-// Задание номер 2
-let num = 100;
-
-for(let i = 2; i < num; i++) {
-  let bool = true;
-      
-  for(let j = 3; j < Math.sqrt(num); j++) {
-    if(i % j == 0) {
-      bool = false;
-      break;
-    } 
-  } 
-
-  if(bool == true && i % 2 != 0 || (i == 3 || i== 5 || i== 7)) {
-    console.log(`${i}: Делители данного числа 1 и ${i}`);
-  }
-}
-
+one();
