@@ -20,11 +20,11 @@ function one() {
     if (yourNumber == null) {
       alert("Игра окончена!");
     } else if (!isNumber(yourNumber)) {
-      alert("это не число!Введите число!");
+      alert("Это не число!Введите число!");
       two();
     } else if (yourNumber > someNumber) {
       counter--;
-      alert(`Число больше!Осталось ${counter}  попыток`);
+      alert(`Загаданное число больше!Осталось ${counter}  попыток`);
       if (counter == 0) {
         newGame = confirm("Попытки закончились!Сыграем еще раз?");
         if (newGame) {
@@ -38,7 +38,7 @@ function one() {
       two();
     } else if (yourNumber < someNumber) {
       counter--;
-      alert(`Число меньше!Осталось ${counter}  попыток`);
+      alert(`Загаданное число меньше!Осталось ${counter}  попыток`);
       if (counter == 0) {
         newGame = confirm("Попытки закончились!Сыграем еще раз?");
         if (newGame) {
