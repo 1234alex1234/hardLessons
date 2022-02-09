@@ -4,7 +4,7 @@ const isNumber = function (num) {
 
 
 function one() {
-  let counter = 4;
+  let counter = 10;
   const someNumberFunc = function getRandomInRange() {
     return Math.floor(Math.random() * (100 - 1 + 1)) + 1;
   };
