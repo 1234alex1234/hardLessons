@@ -4,7 +4,7 @@ const isNumber = function (num) {
 
 
 function one() {
-  let counter = 10;
+  let counter = 4;
   const someNumberFunc = function getRandomInRange() {
     return Math.floor(Math.random() * (100 - 1 + 1)) + 1;
   };
@@ -31,9 +31,9 @@ function one() {
           one();
         } else if (newGame == false) {
           alert("Игре конец!");
-          //вот сюда то выходит какая то хрень!!
+          //Сюда,то игра перезапускается.А если где он сейчас,то нет??
         }
-        return; //Почему если вот этого хлопца поставить
+        return; //Почему если этого хлопца поставить
       }
       two();
     } else if (yourNumber < someNumber) {
@@ -51,7 +51,13 @@ function one() {
       }
       two();
     } else if (yourNumber == someNumber) {
-      alert("Вы выйграли!");
+      newGame = confirm("Вы выйграли!Еще разок?");
+      if (newGame) {
+        one();
+      } else if (newGame == false) {
+        alert("Игра окончена!");
+      }
+      return;
     }
   }
   two();
