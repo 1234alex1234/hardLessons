@@ -24,7 +24,7 @@ function one() {
       two();
     } else if (yourNumber > someNumber) {
       counter--;
-      alert(`Загаданное число больше!Осталось ${counter}  попыток`);
+      alert(`Загаданное число меньше!Осталось ${counter}  попыток`);
       if (counter == 0) {
         newGame = confirm("Попытки закончились!Сыграем еще раз?");
         if (newGame) {
@@ -38,7 +38,7 @@ function one() {
       two();
     } else if (yourNumber < someNumber) {
       counter--;
-      alert(`Загаданное число меньше!Осталось ${counter}  попыток`);
+      alert(`Загаданное число больше!Осталось ${counter}  попыток`);
       if (counter == 0) {
         newGame = confirm("Попытки закончились!Сыграем еще раз?");
         if (newGame) {
