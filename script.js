@@ -1,66 +1,15 @@
-const isNumber = function (num) {
-  return !isNaN(parseFloat(num)) && isFinite(num);
-};
+let array = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
 
+for (let i = 0; i < array.length; i++) {
+  const d = new Date();
 
-function one() {
-  let counter = 10;
-  const someNumberFunc = function getRandomInRange() {
-    return Math.floor(Math.random() * (100 - 1 + 1)) + 1;
-  };
-
-  let someNumber = someNumberFunc();
-  console.log(someNumber);
-
-
-  function two() {
-    let yourNumber = prompt("Введите число от 1 до 100");
-    let newGame;
-
-    if (yourNumber == null) {
-      alert("Игра окончена!");
-    } else if (!isNumber(yourNumber)) {
-      alert("Это не число!Введите число!");
-      two();
-    } else if (yourNumber > someNumber) {
-      counter--;
-      alert(`Загаданное число меньше!Осталось ${counter}  попыток`);
-      if (counter == 0) {
-        newGame = confirm("Попытки закончились!Сыграем еще раз?");
-        if (newGame) {
-          one();
-        } else if (newGame == false) {
-          alert("Игре конец!");
-          //Сюда,то игра перезапускается.А если где он сейчас,то нет??
-        }
-        return; //Почему если этого хлопца поставить
-      }
-      two();
-    } else if (yourNumber < someNumber) {
-      counter--;
-      alert(`Загаданное число больше!Осталось ${counter}  попыток`);
-      if (counter == 0) {
-        newGame = confirm("Попытки закончились!Сыграем еще раз?");
-        if (newGame) {
-          one();
-        } else if (newGame == false) {
-          alert("Игре конец!");
-          //сюда то тоже!Почему??)
-        }
-        return; //и вот этого соответственно
-      }
-      two();
-    } else if (yourNumber == someNumber) {
-      newGame = confirm("Вы выйграли!Еще разок?");
-      if (newGame) {
-        one();
-      } else if (newGame == false) {
-        alert("Игра окончена!");
-      }
-      return;
-    }
+  if (i < 5 && array[i] !== (array[d.getDay() - 1])) {
+    document.querySelector('.out').innerHTML += `${array[i]}<br>`;
+  } else if (i > 4 && array[i] !== (array[d.getDay() - 1])) {
+    document.querySelector('.out').innerHTML += `<i>${array[i]}</i><br>`;
   }
-  two();
-}
 
-one();
+  if (array[d.getDay() - 1] == array[i]) {
+    document.querySelector('.out').innerHTML += `${array[i].bold()}<br>`;
+  }
+}
