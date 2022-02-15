@@ -17,23 +17,23 @@ function getFullTime() {
   let hours = nowDate.getHours();
   let minutes = nowDate.getMinutes();
   let seconds = nowDate.getSeconds();
-  let s = seconds % 10;
-  let m = minutes % 10;
+  let secTrim = seconds % 10;
+  let minTrim = minutes % 10;
 
 
-  if (s == 1 && seconds !== 11) {
+  if (secTrim == 1 && seconds !== 11) {
     textSecond = textSecond + 'а';
   } else if (seconds == 12 || seconds == 13 || seconds == 14) {
     textSecond = textSecond + '';
-  } else if (s >= 2 && s <= 4) {
+  } else if (secTrim >= 2 && secTrim <= 4) {
     textSecond = textSecond + 'ы';
   }
 
-  if (m == 1 && minutes !== 11) {
+  if (minTrim == 1 && minutes !== 11) {
     textMinutes = textMinutes + 'а';
   } else if (minutes == 12 || minutes == 13 || minutes == 14) {
     textMinutes = textMinutes + '';
-  } else if (m >= 2 && m <= 4) {
+  } else if (minTrim >= 2 && minTrim <= 4) {
     textMinutes = textMinutes + 'ы';
   }
 
