@@ -5,15 +5,15 @@ let arrMonth = ['Декабря', 'Января', 'Февраля', 'Марта'
   'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября'
 ];
 
-function getFullTime1() {
+function getFullTime() {
   let nowDate = new Date();
   let textSecond = 'секунд';
   let textMinutes = 'минут';
   let textHours = 'час';
   let year = nowDate.getFullYear();
-  let month = arrMonth[nowDate.getMonth() + 1];
-  let day = nowDate.getDate();
   let textDay = days[(nowDate.getDay())];
+  let month = nowDate.getMonth() + 1;
+  let day = nowDate.getDate();
   let hours = nowDate.getHours();
   let minutes = nowDate.getMinutes();
   let seconds = nowDate.getSeconds();
@@ -45,29 +45,15 @@ function getFullTime1() {
     textHours = textHours + 'ов';
   }
 
-  out.innerHTML = `Сегодня ${textDay} ${day} ${month} ${year} года 
+  out.innerHTML = `Сегодня ${textDay} ${day} ${arrMonth[month]} ${year} года 
   ${hours} ${textHours} ${minutes} ${textMinutes} ${seconds} ${textSecond}`;
+
+  out1.innerText = `'${zero(day)}.${zero(month)}.${zero(year)} - ${zero(hours)}:${zero(minutes)}:${zero(seconds)}'`;
 }
-
-function getFullTime2() {
-  let nowDate = new Date();
-  let year = nowDate.getFullYear();
-  let month = zero(nowDate.getMonth() + 1);
-  let day = zero(nowDate.getDate());
-  let hours = zero(nowDate.getHours());
-  let minutes = zero(nowDate.getMinutes());
-  let seconds = zero(nowDate.getSeconds());
-
-  out1.innerText = `'${day}.${month}.${year} - ${hours}:${minutes}:${seconds}'`;
-}
-
-
 
 function zero(x) {
   return (x < 10) ? '0' + x : x;
 }
 
-getFullTime1();
-getFullTime2();
-setInterval(getFullTime1, 1000);
-setInterval(getFullTime2, 1000);
+getFullTime();
+setInterval(getFullTime, 1000);
