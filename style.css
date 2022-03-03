@@ -1,0 +1,15 @@
+.alert {
+  padding: 15px;
+  border: 1px solid #d6e9c6;
+  border-radius: 4px;
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+
+.alert2 {
+  padding: 25px;
+  border: 1px solid #f9ffc6;
+  border-radius: 5px;
+  color: #999e3f;
+  background-color: #dff0d8;
+}

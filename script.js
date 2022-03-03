@@ -1,4 +1,3 @@
-let out = document.querySelector('.out');
 let out1 = document.querySelector('.out-1');
 let days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
 let arrMonth = ['Декабря', 'Января', 'Февраля', 'Марта', 'Апреля', 'Мая',
@@ -7,53 +6,52 @@ let arrMonth = ['Декабря', 'Января', 'Февраля', 'Марта'
 
 function getFullTime() {
   let nowDate = new Date();
-  let textSecond = 'секунд';
-  let textMinutes = 'минут';
-  let textHours = 'час';
-  let year = nowDate.getFullYear();
-  let textDay = days[(nowDate.getDay())];
+  let deadLine = '31 december 2022';
+  let timeRemaining = new Date(deadLine).getTime() - nowDate.getTime();
+  let dayToNY = Math.floor(timeRemaining / 1000 / 60 / 60 / 24);
   let month = nowDate.getMonth() + 1;
-  let day = nowDate.getDate();
+  let day = nowDate.getDate() + 1;
   let hours = nowDate.getHours();
   let minutes = nowDate.getMinutes();
   let seconds = nowDate.getSeconds();
-  let secTrim = seconds % 10;
-  let minTrim = minutes % 10;
 
 
-  if (secTrim == 1 && seconds !== 11) {
-    textSecond = textSecond + 'а';
-  } else if (seconds == 12 || seconds == 13 || seconds == 14) {
-    textSecond = textSecond + '';
-  } else if (secTrim >= 2 && secTrim <= 4) {
-    textSecond = textSecond + 'ы';
-  }
-
-  if (minTrim == 1 && minutes !== 11) {
-    textMinutes = textMinutes + 'а';
-  } else if (minutes == 12 || minutes == 13 || minutes == 14) {
-    textMinutes = textMinutes + '';
-  } else if (minTrim >= 2 && minTrim <= 4) {
-    textMinutes = textMinutes + 'ы';
-  }
-
-  if ((hours >= 2 && hours <= 4) || (hours >= 22 && hours <= 24)) {
-    textHours = textHours + 'а';
-  }
-
-  if ((hours >= 5 && hours <= 20) || hours == 0) {
-    textHours = textHours + 'ов';
-  }
-
-  out.innerHTML = `Сегодня ${textDay} ${day} ${arrMonth[month]} ${year} года 
-  ${hours} ${textHours} ${minutes} ${textMinutes} ${seconds} ${textSecond}`;
-
-  out1.innerText = `'${zero(day)}.${zero(month)}.${zero(year)} - ${zero(hours)}:${zero(minutes)}:${zero(seconds)}'`;
+  return {
+    dayToNY: dayToNY,
+    month: month,
+    day: day,
+    hours: hours,
+    minutes: minutes,
+    seconds: seconds,
+  };
 }
+
+function addResult() {
+  let result = getFullTime();
+
+  if (result.hours > 6 && result.hours < 12) {
+    out1.innerText = `Доброе утро!`;
+  } else if (result.hours > 12 && result.hours < 18) {
+    out1.innerText = `Добрый день!`;
+  } else {
+    out1.innerText = `Добрый вечер!`;
+  }
+  out1.innerText += `
+  Сегодня: ${days[result.day]}`;
+  out1.innerText += `
+  Текущее время: ${zero(result.hours)}:${zero(result.minutes)}:${zero(result.seconds)}`;
+  out1.innerText += `
+  Дней до нового года: ${result.dayToNY}.Ура!`;
+}
+
+addResult();
+setInterval(addResult, 1000);
+
 
 function zero(x) {
   return (x < 10) ? '0' + x : x;
 }
+
 
 getFullTime();
 setInterval(getFullTime, 1000);
